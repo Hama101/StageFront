@@ -1,0 +1,7 @@
+{
+    "name": "itsToDo",
+    "integrations": {
+    "capacitor": {}
+    },
+    "type": "react"
+}
