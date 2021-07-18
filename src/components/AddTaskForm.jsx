@@ -2,15 +2,16 @@ import React from 'react'
 import { useLocation, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from './globals/axios';
-import "./css/AddTask.css"
-
+import "./css/oldCss/AddTask.css"
+import Alert from './Alert'
 function AddTask() {
+    const [error, seterror] = useState(null)
     const location = useLocation()
     const history = useHistory()
     const user = location.state
     const [todo, setTodo] = useState({
         title: "",
-        discreption: "",
+        description: "",
         delay: "",
         team: "",
         worker: "",
@@ -34,14 +35,16 @@ function AddTask() {
         getTeam()
     },[])
     const hundelClick = async(t)=>{
-        console.log("Inside : " , t)
+        console.log("the item i m sending !" , t)
+        seterror(null)
         try{
             const url = '/addTask/'
             const req = await axios.post(url , t)
-            //alert("Done <3 !")
+            console.log(req.data)
+            seterror(true)
             return req.data
         }catch(err){
-            alert(err)
+            seterror("Something went wrong please check again !")
         }
     }
     return (
@@ -61,15 +64,16 @@ function AddTask() {
                             <div className="card-body">
                                     <div className="input-group form-group">
                                         <div className="input-group-prepend">
-                                            <span className="input-group-text"><i className="fas fa-user"></i></span>
+                                            <span className="input-group-text"><i className="fas fa-book"></i></span>
                                         </div>
                                         <input type="text" className="form-control" placeholder="title" required
                                         onChange={e => setTodo({ ...todo, title: e.target.value })}
                                         />
                                     </div>
+                                    <br />
                                     <div className="input-group form-group">
                                         <div className="input-group-prepend">
-                                            <span className="input-group-text"><i className="fas fa-user"></i></span>
+                                            <span className="input-group-text"><i className="fas fa-users"></i></span>
                                         </div>
                                         <select required readOnly className="form-control" aria-label=".form-select-sm example">
                                             {
@@ -80,6 +84,7 @@ function AddTask() {
                                             }
                                         </select>
                                     </div>
+                                    <br />
                                     <div className="input-group form-group">
                                         <div className="input-group-prepend">
                                             <span className="input-group-text"><i className="fas fa-user"></i></span>
@@ -96,37 +101,53 @@ function AddTask() {
                                             }
                                         </select>
                                     </div>
+                                    <br />
                                     <div className="input-group form-group">
                                         <div className="input-group-prepend">
-                                            <span className="input-group-text"><i className="fas fa-user"></i></span>
+                                            <span className="input-group-text"><i className="fas fa-calendar"></i></span>
                                         </div>
                                         <input type="date" className="form-control" placeholder="delay" required
                                         onChange={e => setTodo({ ...todo, delay: e.target.value })}
                                         />
                                     </div>
+                                    <br />
                                     <div className="input-group form-group">
                                         <div className="input-group-prepend">
-                                            <span className="input-group-text"><i className="fas fa-key"></i></span>
+                                            <span className="input-group-text"><i className="fas fa-align-justify"></i></span>
                                         </div>
-                                        <textarea required placeholder="discreption ..." className="form-control" rows="4" cols="50" maxlength="200"
-                                                onChange={e => setTodo({ ...todo, discreption: e.target.value })}>
+                                        <textarea required placeholder="discreption ..." className="form-control" rows="3" cols="50" maxlength="300"
+                                                onChange={e => setTodo({ ...todo, description: e.target.value })}>
                                             {todo.discreption}
                                         </textarea>
                                     </div>
-                                    <div className="form-group">
+                                    <br />
+                                    <div>
+										{
+											error ? 
+											(
+											<div >
+												<Alert dakey = "" error = {error}/>
+											</div>
+											)
+											:
+											(<div></div>)
+										}
+									</div>
+                                    <br />
+                                    <div className="box form-group">
                                         <button  value="Login" className="btn float-right btn-warning"
                                             onClick={() => {
                                                 hundelClick(todo)
-                                                history.push('my-team' , user)
                                             }} >
                                                 Next
-                                            </button>
+                                        </button>
                                     </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {error===true ?(history.push("my-team" , user)):(<div></div>)}
         </div>
     )
 }

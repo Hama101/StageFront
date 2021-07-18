@@ -2,7 +2,7 @@ import axios from './globals/axios';
 import { Navbar, Nav } from 'react-bootstrap';
 import { useHistory, useLocation } from "react-router-dom";
 
-import "./css/Nav.css"
+import "./css/oldCss/Nav.css"
 const CNav = () => {
     const history = useHistory()
     const location = useLocation()

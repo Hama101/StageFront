@@ -1,8 +1,8 @@
 import {useState } from "react"
 import { useHistory } from "react-router-dom";
 import axios from "./globals/axios"
-
-import './css/LogIn.css'
+import './css/oldCss/LogIn.css'
+import Alert from "./Alert";
 
 const App = ()=>{
     const history = useHistory()
@@ -29,86 +29,66 @@ const App = ()=>{
 			setError("Username or password is incorrect !")
 		}
 	}
-    return(
+
+	return(
 		<div>
 			{
-			user.logedIn  ? 
-			(history.push('my-list' , user))
-			:
-			(<div className="centered">
-			<div className="container">
-		<div className="d-flex justify-content-center h-100">
-			<div className="card">
-				<div className="card-header">
-					<h3>Sign In</h3>
-					<div className="d-flex justify-content-end social_icon">
-						<span><i className="fab fa-facebook-square"></i></span>
-						<span><i className="fab fa-google-plus-square"></i></span>
-						<span><i className="fab fa-twitter-square"></i></span>
+				user.logedIn ? 
+				(history.push('my-list' , user)) 
+				: 
+				(<div>
+					<br /><br /><br /><br /><br /> <br />
+					<div class="container">
+						<div class="login-singup shadow">
+							<div class="login  text-center">
+								<div class="d-flex">
+									<div class="login-form">
+										<div class="h1 text-purple text-uppercase">LOG IN </div>
+											<div class="sociel-media mt-4 d-flex justify-content-center">
+										</div>
+									<div class="form-group">
+										<input type="text"  id="email-1" placeholder="Username" required
+										onChange = {e => setUser({...user , username : e.target.value})}/>
+									</div>
+									<div class="form-group">
+										<input type="password"  id="password-1" placeholder="Password" required
+											onChange = {e => setUser({...user , password : e.target.value})}/>
+									</div>
+									<div>
+										{
+											error ? 
+											(
+											<div >
+												<Alert dakey = "" error = {error}/>
+											</div>
+											)
+											:
+											(<div></div>)
+										}
+									</div>
+									<br />
+									<button class="btn-purple"
+											onClick={()=>{
+												logIn()
+											}}>LOG IN</button>
+									<br />
+									<br />
+								<p class="text-capitalize text-secondary d-md-none">i don't have account!<button
+										class="btn btn-link" type="button" id="toggle-4"
+											onClick={()=>history.push("sign-up")}>
+											SIGN UP
+									</button></p>
+									<a href="/" class="text-capitalize text-secondary">Forget your Password ? </a>
+							</div>
+						</div>
+						</div>
+						</div>
 					</div>
 				</div>
-				<div className="card-body">
-						<div className="input-group form-group">
-							<div className="input-group-prepend">
-								<span className="input-group-text"><i className="fas fa-user"></i></span>
-							</div>
-							<input type="text" className="form-control" placeholder="username" required
-							value={user.username}
-							onChange = {e => {
-								setUser({...user , username : e.target.value.toLowerCase()})
-							}}
-							/>
-						</div>
-						<div className="input-group form-group">
-							<div className="input-group-prepend">
-								<span className="input-group-text"><i className="fas fa-key"></i></span>
-							</div>
-							<input type="password" className="form-control" placeholder="password"
-							value={user.password}
-							onChange = {e => setUser({...user , password : e.target.value})}/>
-						</div>
-						<div className="row align-items-center remember">
-							<input type="checkbox"/>Remember Me
-						</div>
-						<div>
-						{
-							error ? 
-							(
-							<div>
-								<br></br>
-								<div class="alert alert-danger" role="alert">
-									{error}
-								</div>
-							</div>
-							)
-							:
-							(<div></div>)
-						}
-						</div>
-						<div className="form-group">
-							<input type="submit" value="Login" className="btn float-right btn-warning"
-							onClick={()=>{
-								logIn()
-							}}/>
-						</div>
-				</div>
-				<div className="card-footer">
-					<div className="d-flex justify-content-center links">
-						Don't have an account?<button onClick={()=>history.push("sign-up")}>Sign Up</button>
-					</div>
-					<div className="d-flex justify-content-center">
-						<a href="/">Forgot your password?</a>
-					</div>
-				</div>
-			</div>
+				)
+			}
 		</div>
-	</div>
-	</div>
 		)
-		}
-	</div>
-	)
-
 }
 
 export default App

@@ -53,15 +53,15 @@ function MyTeam() {
                         <div className="card-header">
                             <h3>My Team</h3>
                             <div className="d-flex justify-content-end social_icon">
-                                <span><i className="fab fa-facebook-square"></i></span>
-                                <span><i className="fab fa-google-plus-square"></i></span>
-                                <span><i className="fab fa-twitter-square"></i></span>
+                                        <span><i className="fab fa-facebook-square"></i></span>
+                                        <span><i className="fab fa-google-plus-square"></i></span>
+                                        <span><i className="fab fa-twitter-square"></i></span>
                             </div>
                         </div>
                         <div className="card-body">
                                 <div className="input-group form-group">
                                     <div className="input-group-prepend">
-                                        <span className="input-group-text"><i className="fas fa-user"></i></span>
+                                        <span className="input-group-text"><i className="fas fa-users"></i></span>
                                     </div>
                                     <select required className="form-control" aria-label=".form-select-sm example"
                                             >
@@ -69,6 +69,7 @@ function MyTeam() {
                                         
                                     </select>
                                 </div>
+                                <br />
                                 <div className="input-group form-group">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text"><i className="fas fa-user"></i></span>
@@ -91,6 +92,7 @@ function MyTeam() {
                                         }
                                     </select>
                                 </div>
+                                <br />
                                 <perfect-scrollbar className="ps-show-limits">
                         <div style={{position: "static"}} className="ps ps--active-y">
                             <div className="ps-content">
@@ -108,6 +110,16 @@ function MyTeam() {
                                 )
                                 :
                                 (<div class="loader"></div>)}
+                            </div>
+                            <br />
+                            <div className="box form-group ">
+                                        <button value="Login" className="btn float-left btn-warning"
+                                        onClick={()=>{
+                                                alert("The next will add Chat room here and nav Bar !")
+                                        }}
+                                        >
+                                            #{team.name}
+                                        </button>
                             </div>
                         </div>
                     </perfect-scrollbar>

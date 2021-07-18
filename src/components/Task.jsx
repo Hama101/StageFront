@@ -1,6 +1,6 @@
 import React , {useState , useEffect} from 'react'
 import axios from "./globals/axios"
-import "./css/Task.css"
+import "./css/oldCss/Task.css"
 
 function Task( props  ) {
     console.log("the props id :",props.id);

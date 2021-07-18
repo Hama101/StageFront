@@ -1,0 +1,71 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 650px;
+}
+/*login-singup styling*/
+.login-singup{
+    background-color: white;
+}
+.login-singup .desc {
+    background-image: url("../../static/images/bg.jpg");
+    background-position: center;
+    background-size: cover;
+    color: white;
+    padding: 150px 30px 150px 30px;
+}
+.login-singup .desc p {
+    max-width: 450px;
+}
+.login-singup .login-form,.sign-form{
+    padding:70px 25px 70px 25px
+}
+
+.login-singup li{
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin-left: 15px;
+}
+.login-singup li a {
+    color: black;
+}
+.login-singup input{
+    width: 270px;
+    height: 40px;
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 10px;
+}
+.sign-form , .login-form{
+    width: 50%;
+}
+
+@media (max-width: 767.98px) {
+    body{
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 680px;
+    }
+    .login-singup {
+        border-radius: 5px;
+    }
+    .login,.singup {
+        display: flex;
+        justify-content: center;
+    }
+    .login-singup .desc {
+        display: none;
+    }
+    .login-singup .login-form,.sign-form{
+        padding: 70px 25px 70px 25px;
+    }
+    .sign-form , .login-form{
+        width: 100%;
+    }
+    
+ }

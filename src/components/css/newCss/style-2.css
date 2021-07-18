@@ -1,0 +1,71 @@
+body{
+    padding:30px 0px 30px 0px;
+}
+/*add task styling*/
+.add-task{
+    background-color: white;
+}
+.add-task .form-control,.h4{
+    margin: 15px;
+}
+.add-task .form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: var(--bs-purple);
+    outline: 0;
+    box-shadow: 0 0 0 0.20rem rgb(216 31 215 / 25%);
+}
+.add-task a {
+    font-size: 20px;
+    color: var(--bs-purple);
+}
+/*my list styling*/
+.list-task .task {
+    margin-top: 25px;
+    padding-top: 15px;
+    padding-left: 25px;
+    /* border: 1px solid; */
+    padding-right: 25px;
+}
+.list-task .page-link {
+    border: 1px solid;
+    border-radius: 50% !important;
+    margin-right: 5px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pagination a:hover {
+    color: purple
+}
+.list-task .page-link:focus {
+    z-index: 3;
+    color: var(--bs-purple);
+    background-color: #e9ecef;
+    outline: 0;
+    box-shadow: 0 0 0 0.20rem rgb(216 31 215 / 25%);
+}
+
+/* team styling**/
+
+.team .search-icons {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: 21px;
+    right: 45px;
+}
+select {
+    appearance: none;
+    background-position: right center;
+    background-image: url(//cdn.shopify.com/s/files/1/1132/3440/t/4/assets/ico-select.svg?v=1112646…);
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-color: transparent;
+    padding-right: 28px;
+    text-indent: .01px;
+    text-overflow: '';
+    cursor: pointer;
+}

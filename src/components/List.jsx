@@ -1,5 +1,5 @@
 import React , {useState , useEffect } from 'react'
-import "./css/List.css"
+import "./css/oldCss/List.css"
 import { useLocation  , useHistory} from "react-router-dom";
 import axios from "./globals/axios";
 import Task from './Task';
@@ -39,7 +39,12 @@ const List = () => {
         <div className="col-md-8">
             <div className="card-hover-shadow-2x mb-3 card">
                 <div className="card-header-tab card-header">
-                    <div className="card-header-title font-size-lg text-capitalize font-weight-normal task-text"><i className="fa fa-tasks"></i>&nbsp;Task Lists For <mark>{user.username}</mark></div>
+                    <div className="card-header-title font-size-lg text-capitalize font-weight-normal task-text"><i className="fa fa-tasks"></i>&nbsp;My List</div>
+                    <div className="d-flex justify-content-end social_icon">
+                        <span><i className="fab fa-facebook-square"></i></span>
+                        <span><i className="fab fa-google-plus-square"></i></span>
+                        <span><i className="fab fa-twitter-square"></i></span>
+                    </div>
                 </div>
                 <div className="scroll-area-sm">
                     <perfect-scrollbar className="ps-show-limits">
