@@ -1,11 +1,13 @@
 import { useState , useEffect} from 'react'
-import { useLocation } from 'react-router-dom'
+import {  useHistory } from 'react-router-dom'
 import axios from "./globals/axios"
 import Task from './Task'
 
+
 function MyTeam() {
-    const location = useLocation()
-    const user = location.state
+    const history = useHistory()
+    const state = JSON.parse(localStorage.getItem("user"))
+    const user = state
 
 
     const [team , setTeam] = useState({})
@@ -43,11 +45,11 @@ function MyTeam() {
             setToDos([])
         }
     }
-
+    console.log(team);
     return (
         <div>
         <div className="centered">
-            <div className="container">
+            <div className="">
                 <div className="d-flex justify-content-center h-100">
                     <div className="card">
                         <div className="card-header">
@@ -113,13 +115,16 @@ function MyTeam() {
                             </div>
                             <br />
                             <div className="box form-group ">
-                                        <button value="Login" className="btn float-left btn-warning"
+                                        { team.length !== 0 ? (<button value="Login" className="btn float-left btn-warning"
                                         onClick={()=>{
-                                                alert("The next will add Chat room here and nav Bar !")
+                                                history.push("chat-room" , team.name)
                                         }}
                                         >
-                                            #{team.name}
-                                        </button>
+                                            #Chat-Room
+                                        </button>)
+                                        :(
+                                            <div></div>
+                                        )}
                             </div>
                         </div>
                     </perfect-scrollbar>

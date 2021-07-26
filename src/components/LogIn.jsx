@@ -24,12 +24,13 @@ const App = ()=>{
 			const req  = await axios.post(url ,u )
 			setUser({...user, token : req.data.token ,
 								logedIn : !user.logedIn})
+			localStorage.setItem('user', JSON.stringify({...user}) )
 			return(req.data)
 		}catch(err){
 			setError("Username or password is incorrect !")
 		}
 	}
-
+	localStorage.setItem('user', JSON.stringify({...user}) )
 	return(
 		<div>
 			{

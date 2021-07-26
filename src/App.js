@@ -18,10 +18,18 @@ import AddTask from "./components/AddTask"
 import AddTeam from "./components/AddTeam"
 import MyTeam from "./components/MyTeam"
 import SignUp from "./components/SignUp"
+import Chat from "./components/Chat"
+import Nav from "./components/Nav"
 
 function App() {
   return (
     <Router>
+    <div className="row d-flex justify-content-center">
+      <div style={{top:0 , width:"400px"}}>
+        <Nav/>
+      </div>
+    
+      <div className="centred">
       <Switch>
         <Route exact path="/" component={LogIn} />
         <Route exact path="/my-list" component={List} />
@@ -29,8 +37,11 @@ function App() {
         <Route exact path="/add-team" component={AddTeam} />
         <Route exact path="/add-task" component={AddTask} />
         <Route exact path="/sign-up" component={SignUp} />
+        <Route exact path="/chat-room" component={Chat} />
       </Switch>
-    </Router>
+      </div>
+    
+    </div></Router>
     );
 }
 

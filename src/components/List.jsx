@@ -1,15 +1,17 @@
 import React , {useState , useEffect } from 'react'
 import "./css/oldCss/List.css"
-import { useLocation  , useHistory} from "react-router-dom";
+import {   useHistory} from "react-router-dom";
 import axios from "./globals/axios";
 import Task from './Task';
 
+
+
 const List = () => {
     const history = useHistory()
-    const location = useLocation()
-    let [todos, setToDos] = useState([])
-    let [user , setUser] = useState(location.state)
-    
+    const state = JSON.parse(localStorage.getItem("user"))
+    const [todos, setToDos] = useState([])
+    const [user , setUser] = useState(state)
+    console.log(user);
     //for data fetch
     const fetchData = async() =>{
         const url = `/todos/${user['username']}/`
@@ -33,9 +35,12 @@ const List = () => {
         }
         checkIfAdminUser()  
         updateData()
+        
     }, [])
+    console.log(user);
+    localStorage.setItem('user', JSON.stringify({...user}) )
     return (
-        <div className="row d-flex justify-content-center container">
+        <div className="">
         <div className="col-md-8">
             <div className="card-hover-shadow-2x mb-3 card">
                 <div className="card-header-tab card-header">

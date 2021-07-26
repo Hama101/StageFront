@@ -33,7 +33,7 @@ function UpDateToAdmin(user) {
     return (
         <div>
             <div className="centered">
-                <div className="container">
+                <div className="">
                     <div className="d-flex justify-content-center h-100">
                         <div className="card">
                             <div className="card-header">
@@ -58,7 +58,7 @@ function UpDateToAdmin(user) {
                                         >
                                         </textarea>
                                     </div>
-                                    <div className="form-group">
+                                    <div className="form-group box">
                                         <button  value="Login" className="btn float-right btn-warning"
                                             onClick={()=>{
                                                 hundelClick()

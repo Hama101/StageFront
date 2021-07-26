@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom';
+import React, {  } from 'react'
+
 import UpDateToAdmin from './UpDateToAdmin';
 import AddTeamForm from './AddTeamForm';
 
@@ -7,8 +7,8 @@ import AddTeamForm from './AddTeamForm';
 
 
 function AddTeam() {
-    const location = useLocation()
-    const user = location.state
+    const state = JSON.parse(localStorage.getItem("user"))
+    const user =state
     console.log(user.isAdmin)
     return (
         <div>

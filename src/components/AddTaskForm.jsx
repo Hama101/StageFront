@@ -1,14 +1,17 @@
 import React from 'react'
-import { useLocation, useHistory } from 'react-router-dom';
+import {  useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from './globals/axios';
 import "./css/oldCss/AddTask.css"
 import Alert from './Alert'
+
+
 function AddTask() {
     const [error, seterror] = useState(null)
-    const location = useLocation()
+
     const history = useHistory()
-    const user = location.state
+    const state = JSON.parse(localStorage.getItem("user"))
+    const user = state
     const [todo, setTodo] = useState({
         title: "",
         description: "",
@@ -50,7 +53,7 @@ function AddTask() {
     return (
         <div>
             <div className="centered">
-                <div className="container">
+                <div className="">
                     <div className="d-flex justify-content-center h-100">
                         <div className="card">
                             <div className="card-header">
