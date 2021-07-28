@@ -1,13 +1,13 @@
 import axios from './globals/axios';
 import { useHistory, useLocation } from "react-router-dom";
-
-
 import "./css/oldCss/Nav.css"
+import { useState , useEffect } from 'react'
 const CNav = () => {
     const history = useHistory()
     const location = useLocation()
     const state = JSON.parse(localStorage.getItem("user"))
     const user = state
+    const [rooms , setRooms] = useState([])
     const logOut = ()=>{
         try{
             const url = '/logout/'
@@ -23,8 +23,23 @@ const CNav = () => {
         }
     }
     const goToRoom = (team)=>{
-        history.push("/chat-room",{team})
+        history.push("/chat-room",team)
     }
+    useEffect(() => {
+        const getRooms = async()=>{
+            try{
+                const url =`/getteams/${user.username}/`
+                const req = await axios.get(url)
+                setRooms(req.data)
+                return req
+            }catch(err){    
+                alert(err);
+            }
+        }
+        getRooms()
+    }, [])
+    console.log(user);
+    console.log(rooms);
     return (
 
         <div className="">
@@ -51,7 +66,13 @@ const CNav = () => {
                 }}>
                 
                 <option selected="selected" value="">Rooms</option>
-                    <option value="Room1"> #Room 1 </option>
+                    {
+                        rooms.map(room =>{
+                            return (
+                                <option value={room}> #{room} </option>
+                            )
+                        })
+                    }
                 </select>
                 </div>
                 )
